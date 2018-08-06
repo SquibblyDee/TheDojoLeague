@@ -27,17 +27,6 @@ namespace TheDojoLeague.Controllers
             return View();
         }
 
-        [HttpPost("processninja")]
-        public IActionResult ProcessNinja(Ninja data)
-        {
-            if(ModelState.IsValid)
-            {
-                ninjaFactory.Add(data);
-                return RedirectToAction("Index");
-            }
-            return View("Index");
-        }
-
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
