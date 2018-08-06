@@ -35,7 +35,7 @@ namespace TheDojoLeague.Controllers
                 ninjaFactory.Add(data);
                 return RedirectToAction("Ninjas");
             }
-            return View("Ninjas");
+            return RedirectToAction("Ninjas");
         }
 
         [HttpGet("dojos")]
@@ -45,11 +45,44 @@ namespace TheDojoLeague.Controllers
             return View();
         }
 
-        public IActionResult Contact()
+        [HttpPost("processdojo")]
+        public IActionResult ProcessDojo(Dojo data)
         {
-            ViewData["Message"] = "Your contact page.";
+            if(ModelState.IsValid)
+            {
+                dojoFactory.Add(data);
+                return RedirectToAction("Dojos");
+            }
+            return RedirectToAction("Dojos");
+        }
 
+
+        [HttpGet("ninja/{id}")]
+        public IActionResult Ninja(int id)
+        {
+            ViewBag.Ninja = ninjaFactory.FindByID(id);
             return View();
+        }
+
+        [HttpGet("dojo/{id}")]
+        public IActionResult Dojo(int id)
+        {
+            ViewBag.Dojo = ninjaFactory.NinjasWithDojo(id);
+            return View();
+        }
+
+        [HttpGet("banish/{id}")]
+        public IActionResult Banish(int id)
+        {
+            ViewBag.Dojo = ninjaFactory.Banish(id);
+            return RedirectToAction("Dojo", id);
+        }
+
+        [HttpGet("recruit/{id}/{dojoid}")]
+        public IActionResult Recruit(int id, int dojoid)
+        {
+            ViewBag.Dojo = ninjaFactory.Recruit(id, dojoid);
+            return RedirectToAction("Dojo", id);
         }
 
         public IActionResult Error()

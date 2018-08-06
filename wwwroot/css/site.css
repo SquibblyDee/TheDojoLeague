@@ -66,3 +66,15 @@ body {
     border-left: 2px solid black;
     padding-left: 5%;
 }
+
+.bottom-left{
+    display: inline-block;
+    width: 40%;
+}
+
+.bottom-right{
+    display: inline-block;
+    width: 40%;
+    margin-left: 5%;
+    vertical-align: top !important;
+}

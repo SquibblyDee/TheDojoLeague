@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Contact";
+}
+
+<h1>Name:
+    @ViewBag.Ninja.Name
+</h1>
+<h3>Ninja Level -
+    @ViewBag.Ninja.Level
+</h3>
+<h3>Description:
+    @ViewBag.Ninja.Description
+</h3>
+    @if(@ViewBag.Ninja.Dojo_Id != 3)
+    {
+    <h3>Current Dojo:
+    <a href="~/dojo/@ViewBag.Ninja.Dojo_Id">Dojo Name Here</a>
+    </h3>
+    }
+    @if(@ViewBag.Ninja.Dojo_Id == 3)
+    {
+    <h3>Current Dojo: Rouge</h3>
+    }

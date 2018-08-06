@@ -1,0 +1,56 @@
+@{
+    ViewData["Title"] = "Contact";
+}
+<div class="top">
+    <h1>@ViewBag.Dojo[0].dojo.Name</h1>
+    <h3>Dojo Location - @ViewBag.Dojo[0].dojo.Location</h3>
+    <h3>Information - @ViewBag.Dojo[0].dojo.Information</h3>
+</div>
+<div class="bottom-left">
+    <h1>Current Members</h1>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <th scope="col">Ninja</th>
+            <th scope="col">Action</th>
+        </thead>
+        <tbody>
+            @foreach(var item in @ViewBag.Dojo)
+            {
+                @if(@item.Dojo_Id == @ViewBag.Dojo[0].dojo.Id)
+                {
+                    <tr>
+                        <td><a href=~/ninja/@item.Id>@item.Name</a></td>
+                        <td><a href=~/banish/@item.Id>Banish!</a></td>
+                    </tr>
+                }
+                
+            }
+            
+        </tbody>
+    </table>
+</div>
+<div class="bottom-right">
+    <h1>Rouge Ninjas</h1>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <th scope="col">Ninja</th>
+            <th scope="col">Action</th>
+        </thead>
+        <tbody>
+            @foreach(var item in @ViewBag.Dojo)
+            {
+                @if(@item.Dojo_Id != @ViewBag.Dojo[0].dojo.Id)
+                {
+                    <tr>
+                        <td><a href=~/ninja/@item.Id>@item.Name</a></td>
+                        <td><a href=~/recruit/@item.Id/@ViewBag.Dojo[0].dojo.Id>Recruit!</a></td>
+                    </tr>
+                }
+
+            }
+
+        </tbody>
+    </table>
+</div>
+
+

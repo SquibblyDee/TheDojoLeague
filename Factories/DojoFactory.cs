@@ -23,7 +23,7 @@ namespace DapperApp.Factories
         public void Add(Dojo item)
         {
             using (IDbConnection dbConnection = Connection) {
-                string query =  "INSERT INTO Dojos (Name, Description, Length, Elevation, Latitude, Longitude) VALUES (@Name, @Description, @Length, @Elevation, @Latitude, @Longitude)";
+                string query =  "INSERT INTO Dojos (Name, Location, Information) VALUES (@Name, @Location, @Information)";
                 dbConnection.Open();
                 dbConnection.Execute(query, item);
             }
@@ -36,7 +36,7 @@ namespace DapperApp.Factories
                 return dbConnection.Query<Dojo>("SELECT * FROM Dojos");
             }
         }
-        public Dojo FindById(long id)
+        public Dojo FindById(int id)
         {
             using (IDbConnection dbConnection = Connection)
             {
