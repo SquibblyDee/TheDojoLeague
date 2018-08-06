@@ -22,12 +22,14 @@ namespace DapperApp.Factories
         }
         public void Add(Ninja item)
         {
-            using (IDbConnection dbConnection = Connection) {
-                string query =  "INSERT INTO Ninjas (Name, Level, Description, Dojo_Id) VALUES (@Name, @Level, @Description, @Elevation, @Latitude, @Dojo_Id)";
+            using (IDbConnection dbConnection = Connection) 
+            {
+                string query =  "INSERT INTO Ninjas (Name, Level, Description, Dojo_Id) VALUES (@Name, @Level, @Description, @Dojo_Id)";
                 dbConnection.Open();
                 dbConnection.Execute(query, item);
             }
         }
+
         public IEnumerable<Ninja> FindAll()
         {
             using (IDbConnection dbConnection = Connection)
@@ -49,7 +51,7 @@ namespace DapperApp.Factories
         {
             using (IDbConnection dbConnection = Connection)
             {
-                var query = $"SELECT * FROM Ninjas JOIN Dojos ON Ninjas.Dojo_Id";
+                var query = "SELECT * FROM Ninjas LEFT JOIN Dojos ON Ninjas.Dojo_Id WHERE Ninjas.Dojo_Id = Dojos.Id";
                 dbConnection.Open();
 
                 IEnumerable<Ninja> myNinjas = dbConnection.Query<Ninja, Dojo, Ninja>(query, (ninja, dojo) => { ninja.dojo = dojo; return ninja; });

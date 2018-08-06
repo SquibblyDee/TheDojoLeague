@@ -43,8 +43,8 @@ namespace DapperApp.Factories
                 dbConnection.Open();
                 var query =
                 @"
-                SELECT * FROM dojos WHERE id = @Id;
-                SELECT * FROM ninjas WHERE team_id = @Id;
+                SELECT * FROM dojos WHERE Id = @Id;
+                SELECT * FROM ninjas WHERE Dojo_Id = @Id;
                 ";
 
                 using (var multi = dbConnection.QueryMultiple(query, new {Id = id}))
