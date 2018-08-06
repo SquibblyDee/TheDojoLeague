@@ -23,8 +23,8 @@ namespace DapperApp.Factories
         public void Add(Ninja item)
         {
             using (IDbConnection dbConnection = Connection) {
-                string query =  "INSERT INTO Ninjas (Name, Level, Description, Dojo_Id) VALUES (@Name, @Level, @Description, @Elevation, @Latitude, @Dojo_Id)";
-                dbConnection.Open();
+                string query =  "INSERT INTO Ninjas (Name, Level, Description, Dojo_Id) VALUES (@Name, @Level, @Description, @Dojo_Id)";
+                // dbConnection.Open();
                 dbConnection.Execute(query, item);
             }
         }
