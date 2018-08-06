@@ -13,6 +13,7 @@ namespace TheDojoLeague.Models
         [Required]
         public string Name { get; set; }
 
+        [Range(0,10)]
         public int Level { get; set; }
 
         public string AssignedDojo { get; set; }

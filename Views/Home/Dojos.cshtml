@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "About";
+}
+@model Dojo
+<div class="Left2">
+    <h1>All Dojos</h1>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <th scope="col">Dojo Name</th>
+        </thead>
+        <tbody>
+            @foreach(var dojo in @ViewBag.Dojos)
+            {
+                <tr>
+                    @if(@dojo.Name != "Rouge")
+                    {
+                        <td><a href=dojo/@dojo.Id>@dojo.Name</a></td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="Right2">
+    <h1>Register A Dojo</h1>
+    <form asp-action="ProcessDojo" asp-controller="Home" method="post" class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control">
+        <span asp-validation-for="Name" class="text-danger"></span>
+        <br>
+
+        <label asp-for="Location"></label>
+        <input asp-for="Location" class="form-control">
+        <span asp-validation-for="Location" class="text-danger"></span>
+        <br>
+
+        <label asp-for="Information"></label>
+        <textarea asp-for="Information" rows="4" class="form-control"></textarea>
+        <span asp-validation-for="Information" class="text-danger"></span>
+        <br>
+
+        <input type="submit" class="btn btn-primary btn-lg" id="submitbtn" value="Add">
+    </form>
+</div>

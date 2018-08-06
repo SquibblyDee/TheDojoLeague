@@ -41,13 +41,28 @@ body {
 .Left{
     display: inline-block;
     width: 40%;
-    border-right: 2px solid black;
-    padding-right: 5%;
+    
 }
 
 .Right{
     display: inline-block;
     width: 40%;
     margin-left: 5%;
+    border-left: 2px solid black;
+    padding-left: 5%;
     vertical-align: top !important;
+}
+
+.Left2{
+    display: inline-block;
+    width: 40%;
+}
+
+.Right2{
+    display: inline-block;
+    width: 40%;
+    margin-left: 5%;
+    vertical-align: top !important;
+    border-left: 2px solid black;
+    padding-left: 5%;
 }

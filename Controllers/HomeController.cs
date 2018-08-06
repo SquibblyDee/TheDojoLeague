@@ -38,10 +38,10 @@ namespace TheDojoLeague.Controllers
             return View("Ninjas");
         }
 
-        public IActionResult About()
+        [HttpGet("dojos")]
+        public IActionResult Dojos()
         {
-            ViewData["Message"] = "Your application description page.";
-
+            ViewBag.Dojos = dojoFactory.FindAll();
             return View();
         }
 
