@@ -1,6 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    
 }
+@using System.Collections.Generic;
 @model Ninja
 <div class="Left">
     <h1>Registered Ninjas</h1>
@@ -46,7 +48,11 @@
             <option value=3>Rouge</option>
             @foreach(var ninja in @ViewBag.Ninjas)
             {
-                <option value=@ninja.dojo.Id>@ninja.dojo.Name</option>
+                @if(@ninja.dojo.Name != "Rouge")
+                {
+                    <option value=@ninja.dojo.Id>@ninja.dojo.Name</option>
+                }
+                
             }
         </select>
         <span asp-validation-for="Dojo_Id" class="text-danger"></span>

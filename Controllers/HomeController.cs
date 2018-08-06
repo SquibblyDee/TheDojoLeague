@@ -20,8 +20,8 @@ namespace TheDojoLeague.Controllers
             ninjaFactory = new NinjaFactory();
         }
 
-        [HttpGet("")]
-        public IActionResult Index()
+        [HttpGet("ninjas")]
+        public IActionResult Ninjas()
         {
             ViewBag.Ninjas = ninjaFactory.NinjasWithDojos();
             return View();
@@ -33,9 +33,9 @@ namespace TheDojoLeague.Controllers
             if(ModelState.IsValid)
             {
                 ninjaFactory.Add(data);
-                return RedirectToAction("Index");
+                return RedirectToAction("Ninjas");
             }
-            return View("Index");
+            return View("Ninjas");
         }
 
         public IActionResult About()
